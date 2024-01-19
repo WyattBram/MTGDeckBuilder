@@ -1,17 +1,86 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+    private static void printGameMenu() {
+        System.out.println("Menu: \n1. Magic: The Gathering\n2. Pokemon\n3. Yu-Gi-Oh\n4. Quit\n");
+    }
 
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+    private static void printActionMenu() {
+        System.out.println("Menu: \n1. Single Prices\n2. Mass entry\n3. Back\n");
+    }
+
+    private static int getMenuChoice(int choicesGiven) {
+        Scanner scnr = new Scanner(System.in);
+        int menuChoice;
+
+        while (true) {
+            if (choicesGiven == 4) {
+                printGameMenu();
+            } else {
+                printActionMenu();
+            }
+            menuChoice = scnr.nextInt();
+            scnr.nextLine();
+            if (menuChoice <= choicesGiven || menuChoice >= 1) {
+                break;
+            }
         }
+        return menuChoice;
+    }
+
+    public static void main(String[] args) {
+
+        //work on the grammer of this
+
+        System.out.println("Welcome to TCGPrices! Explore the prices of Magic: The Gathering, \n"
+                + "Pokemon, and Yu-Gi-Oh cards both singles and mass entries. You can\n" +
+                "also conveniently export card costs to a file for easy access.\n");
+
+        do {
+            int cardChoice = getMenuChoice(4);
+
+            if (cardChoice == 1) {
+                do {
+
+                    int typeChoice = getMenuChoice(3);
+
+                    if (typeChoice == 3) {
+                        break;
+                    }
+
+                } while (true);
+            }
+
+            if (cardChoice == 2) {
+                do {
+
+                    int typeChoice = getMenuChoice(3);
+
+                    if (typeChoice == 3) {
+                        break;
+                    }
+
+                } while (true);
+            }
+
+            if (cardChoice == 3) {
+                do {
+
+                    int typeChoice = getMenuChoice(3);
+
+                    if (typeChoice == 3) {
+                        break;
+                    }
+
+                } while (true);
+
+            }
+
+            if (cardChoice == 4) {
+                break;
+            }
+        } while (true);
+
     }
 }
