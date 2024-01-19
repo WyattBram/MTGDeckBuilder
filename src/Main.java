@@ -33,9 +33,11 @@ public class Main {
 
         //work on the grammer of this
 
-        System.out.println("Welcome to TCGPrices! Explore the prices of Magic: The Gathering, \n"
-                + "Pokemon, and Yu-Gi-Oh cards both singles and mass entries. You can\n" +
-                "also conveniently export card costs to a file for easy access.\n");
+        System.out.println("""
+                Welcome to TCGPrices! Explore the prices of Magic: The Gathering,\s
+                Pokemon, and Yu-Gi-Oh cards both singles and mass entries. You can
+                also conveniently export card costs to a file for easy access.
+                """);
 
         do {
             int cardChoice = getMenuChoice(4);
