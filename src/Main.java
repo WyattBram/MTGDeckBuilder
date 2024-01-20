@@ -31,6 +31,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+        WebScraper ws = new WebScraper();
+
+        ws.returnSingleInfo("Jesters cap");
+
         //work on the grammer of this
 
         System.out.println("""
