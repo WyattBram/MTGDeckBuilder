@@ -1,4 +1,4 @@
-**TCGPrices**
+**TCGPrices** **In Development**
 
 TCGPrices is an application built in Java to gather prices of TCG (Trading Card Games)
 
