@@ -21,8 +21,8 @@ Abilities of TCGPrices:
 
 3) Downloading Prices
 
-  TCGPrices will give you the option to save any looked-up prices in a file of your choosing for convienecne, Just enter
-  the file path that you would like to save the prices to and the application will handle the rest.
+      TCGPrices will give you the option to save any looked-up prices in a file of your choosing for convienecne, Just enter
+      the file path that you would like to save the prices to and the application will handle the rest.
 
 
   
