@@ -25,5 +25,8 @@ Abilities of TCGPrices:
   the file path that you would like to save the prices to and the application will handle the rest.
 
 
+  
+
+
 
   
