@@ -29,11 +29,19 @@ public class Main {
         return menuChoice;
     }
 
+    private static String getCardName(){
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Please enter the card name\n- ");
+
+        return scnr.nextLine();
+
+    }
+
     public static void main(String[] args) {
 
         WebScraper ws = new WebScraper();
 
-        ws.returnSingleInfo("Jesters cap");
+        //ws.returnSingleInfo("Jesters cap");
 
         //work on the grammer of this
 
@@ -50,6 +58,12 @@ public class Main {
                 do {
 
                     int typeChoice = getMenuChoice(3);
+
+                    if (typeChoice == 1) {
+                        ws.returnSingleInfo(getCardName());
+
+
+                    }
 
                     if (typeChoice == 3) {
                         break;

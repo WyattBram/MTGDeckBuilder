@@ -3,6 +3,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class WebScraper {
 
     public void returnSingleInfo(String card){
@@ -23,14 +26,48 @@ public class WebScraper {
                 return;
             }
 
+            System.out.println();
+
             Elements cardInfo = document.select(".productItemWrapper.productCardWrapper");
-            System.out.println(cardInfo);
+
+            //System.out.println(cardInfo);
 
 
             for (Element ci: cardInfo){
-                String title = ci.select(".stylePrice").text();
+                Elements set = ci.select(".productDetailSet");
 
-                System.out.println(title);
+
+                String price = ci.select(".stylePrice").text();
+                String setType = set.select("a").text();
+                String collecterNumber = set.select(".collector-number.d-none.d-sm-block").text();
+                String cardName = ci.select("span.productDetailTitle").text();
+
+                price = price.replace(" ", "\n");
+                price = price.replace("$","Z");
+
+                for (int i = 0; i < 4; i++) {
+
+                    if (i == 0){
+                        price = price.replaceFirst("Z", "NM " + Matcher.quoteReplacement("$"));
+                    }
+                    else if (i == 1){
+                        price = price.replaceFirst("Z", "EX " + Matcher.quoteReplacement("$"));
+                    }
+                    else if (i == 2){
+                        price = price.replaceFirst("Z", "VG " + Matcher.quoteReplacement("$"));
+                    }
+                    else{
+                        price = price.replaceFirst("Z", "G " + Matcher.quoteReplacement("$"));
+                    }
+                }
+
+                System.out.println(cardName);
+                System.out.println(collecterNumber);
+                System.out.println(setType);
+                System.out.println(price);
+                System.out.println();
+
+
             }
 
 
