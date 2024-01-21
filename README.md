@@ -10,7 +10,7 @@ Abilities of TCGPrices:
 1) Prices of Singles
 
    A Single is TCG lingo for a single card
-   e.g.(https://www.tcgplayer.com/search/magic/product?productLineName=magic&productName=Mana+Crypt&Language=English&view=grid)
+   e.g.(https://www.cardkingdom.com/catalog/search?search=header&filter%5Bname%5D=Jester%27s+Cap)
    (Note there are many printings of certain singles, TCHPrices shows you Most printings and prices available for them)
 
 2) Mass Entry
