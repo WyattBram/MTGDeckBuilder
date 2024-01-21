@@ -2,7 +2,7 @@
 
 TCGPrices is an application built in Java to gather prices of TCG (Trading Card Games)
 
-This application uses Jsoup to scrape the HTML and CSS of TCGPlayer (https://www.tcgplayer.com) to display
+This application uses Jsoup to scrape the HTML and CSS of CardKingdom (https://www.cardkingdom.com) to display
 the market price of cards in different categories like Pokemon, Magic: The Gathering, and Yu-Gi-Oh.
 
 Abilities of TCGPrices:
