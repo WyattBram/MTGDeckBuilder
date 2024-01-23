@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TCGPrices.iml" filepath="$PROJECT_DIR$/TCGPrices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MTGPrices.iml" filepath="$PROJECT_DIR$/MTGPrices.iml" />
     </modules>
   </component>
 </project>
