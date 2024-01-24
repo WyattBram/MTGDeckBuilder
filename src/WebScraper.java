@@ -38,7 +38,7 @@ public class WebScraper {
         System.out.println();
     }
 
-    protected void returnSingleInfo(String card) {
+    protected void returnSingleInfo(String card, boolean massEntry) {
 
         String editedCard = card.replace(" ", "+");
 
@@ -73,6 +73,11 @@ public class WebScraper {
                 price = formatPrices(price);
                 printCard(cardName, collecterNumber, setType, price);
 
+                if (massEntry){
+                    Thread.sleep(1000);
+                    break;
+                }
+
 
             }
 
@@ -82,22 +87,6 @@ public class WebScraper {
         }
     }
 
-    protected void massEntry() throws FileNotFoundException {
-       Scanner scnr = new Scanner(System.in);
-
-        System.out.println("Enter path of file that contains your mass entry list");
-        System.out.print("- ");
-
-        File file = new File(scnr.nextLine());
-
-        Scanner scanner = new Scanner(file);
-
-
-
-
-
-
-    }
 
 
 }

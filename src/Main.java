@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     private static void printActionMenu() {
-        System.out.println("Menu: \n1. Single Prices\n2. Mass entry\n3. Quit");
+        System.out.println("Menu: \n1. Card select \n2. Other Decks\n3. Quit");
         System.out.print("- ");
     }
 
@@ -51,7 +51,7 @@ public class Main {
 
             if (cardChoice == 1) {
 
-                ws.returnSingleInfo(getCardName());
+                ws.returnSingleInfo(getCardName(),false);
 
             }
 
