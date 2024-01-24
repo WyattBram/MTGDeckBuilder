@@ -1,11 +1,12 @@
-**MTGPrices - In Development** 
+**MTGDeckBuilder - In Development** 
 
-MTGPrices is an application built in Java to to help you access the prices of Magic: the gathering prices
+MTGDeckBuilder is an application built in Java to to help you access the prices of Magic: the Gathering cards
+and helping you build a deck that you will love
 
 This application uses Jsoup to scrape the HTML and CSS of CardKingdom (https://www.cardkingdom.com) to display
-the market price of cards in different categories like Pokemon, Magic: The Gathering, and Yu-Gi-Oh.
+the market price of cards and allow you to pick which cards you want to put in your deck
 
-Features of MTGPrices:
+Features of MTGDeckBuilder:
 
 1) Prices of Singles
 
@@ -13,16 +14,10 @@ Features of MTGPrices:
    e.g.(https://www.cardkingdom.com/catalog/search?search=header&filter%5Bname%5D=Jester%27s+Cap)
    (Note there are many printings of certain singles, MTGPrices shows you Most printings and prices available for them)
 
-2) Mass Entry
+2) DeckBuilder
 
-   Mass entry refers to a big list of cards that you want to see the prices of. MTGPrices will allow Mass entry via
-   a .txt file that will be parsed through.
-
-
-3) Downloading Prices
-
-      MTGPrices will give you the option to save any looked-up prices in a file of your choosing for convienecne, Just enter
-      the file path that you would like to save the prices to and the application will handle the rest.
+  The deckbuilder is integrated into the system allowing you to pick cards that you want in your deck. This deck
+  will be saved as a .txt file and can be input into a card suppliers website to buy your entire deck all at once.
 
 
   
