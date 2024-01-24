@@ -51,16 +51,12 @@ public class Main {
 
             if (cardChoice == 1) {
 
-                ws.returnSingleInfo(getCardName(),false);
+                ws.returnSingleInfo(getCardName());
 
             }
 
             if (cardChoice == 2) {
-                try{
-                    ws.massEntry();
-                } catch (FileNotFoundException e) {
-                    System.out.println("Sorry, file not found");
-                }
+
 
 
             }

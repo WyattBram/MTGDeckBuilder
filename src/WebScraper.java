@@ -38,7 +38,7 @@ public class WebScraper {
         System.out.println();
     }
 
-    protected void returnSingleInfo(String card, boolean massEntry) {
+    protected void returnSingleInfo(String card) {
 
         String editedCard = card.replace(" ", "+");
 
@@ -72,11 +72,6 @@ public class WebScraper {
 
                 price = formatPrices(price);
                 printCard(cardName, collecterNumber, setType, price);
-
-                if (massEntry){
-                    Thread.sleep(1000);
-                    break;
-                }
 
 
             }
