@@ -1,5 +1,7 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
 
@@ -32,9 +34,64 @@ public class Main {
 
     }
 
+    public static File getDeck(){
+        while (true){
+            Scanner scnr = new Scanner(System.in);
+            int choice = 0;
+
+            System.out.println("Please select option\n" +
+                    "1. Create new deck file\n" +
+                    "2. Use existing deck file\n- ");
+
+            try{
+                choice = scnr.nextInt();
+                if (choice != 1 && choice !=2){
+                    throw new RuntimeException();
+                }
+            } catch (Exception e) {
+                System.out.println("Enter a valid choice");
+            }
+
+
+            if (choice==1){
+                System.out.println("Please enter the path that you want your " +
+                        "deck file saved to\n- ");
+                scnr.nextLine();
+                String fileName = scnr.nextLine();
+                File file = new File(fileName);
+                if (file.exists()){
+                    for (int i = 1; i < 1001; i++) {
+                        if (!new File(fileName+ "Deck"+ i).exists()){
+                            return new File(fileName+ "Deck"+ i + ".txt");
+                        }
+                    }
+                }
+                if (!file.exists()){
+                    System.out.println("Not valid path");
+                }
+            }
+            if (choice==2){
+                System.out.println("Please enter the path of your deck\n- ");
+                scnr.nextLine();
+                String fileName = scnr.nextLine();
+                File file = new File(fileName);
+                if (file.exists()){
+                    return file;
+                }
+                else{
+                    System.out.println("Sorry that path is not valid");
+                }
+            }
+        }
+
+
+
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
 
-        //ws.returnSingleInfo("Jesters cap");
+
+        File file = getDeck();
 
         System.out.println();
         System.out.println("""
@@ -51,13 +108,13 @@ public class Main {
 
             if (cardChoice == 1) {
 
-                ws.returnSingleInfo(getCardName());
+                ws.returnSingleInfo(getCardName(), file);
 
             }
 
             if (cardChoice == 2) {
 
-
+                file = getDeck();
 
             }
 
