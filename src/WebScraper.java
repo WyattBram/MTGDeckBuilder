@@ -4,6 +4,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -109,7 +110,7 @@ public class WebScraper {
                         try{
                             temp = scnr.nextInt();
                             scnr.nextLine();
-                            if (cardList.size()<=temp || temp<1){
+                            if (temp>cardList.size() || temp<1){
                                 throw new RuntimeException();
                             }
                             break;
@@ -119,20 +120,18 @@ public class WebScraper {
                     }
 
                     Scanner scanner = new Scanner(file);
-                    PrintWriter pw = new PrintWriter(file);
+                    FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
 
 
 
                     Card tempCard = cardList.get(temp);
-                    pw.println("   " + tempCard.cardName);
-                    pw.println("   " + tempCard.collecterNumber);
-                    pw.println("   " + tempCard.setType);
-                    pw.println("   " + tempCard.price);
-                    pw.println("=======================================");
+                    fw.write("   " + tempCard.cardName);
+                    fw.write("\n   " + tempCard.collecterNumber);
+                    fw.write("\n   " + tempCard.setType + "\n");
+                    fw.write("   " + tempCard.price);
+                    fw.write("\n=======================================\n");
 
-
-
-                    pw.flush();
+                    fw.flush();
                     break;
 
 
