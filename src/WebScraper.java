@@ -37,6 +37,7 @@ public class WebScraper {
 
 
     protected void returnSingleInfo(String card, File file) {
+        cn = 1;
         Scanner scnr = new Scanner(System.in);
         String editedCard = card.replace(" ", "+");
 
@@ -81,36 +82,34 @@ public class WebScraper {
             while (true){
                 int choice = 0;
                 int temp = 0;
+                Scanner scnrr = new Scanner(System.in);
 
-                while(true) {
-                    System.out.println("Would you like to add one of these cards to your deck\n" +
-                            "1. Yes\n" +
-                            "2. No\n-");
-                    try {
-                        choice = scnr.nextInt();
+                System.out.println("Please select option\n" +
+                        "1. Yes\n" +
+                        "2. No");
+                System.out.print("- ");
 
-                        scnr.nextLine();
-
-                        System.out.println(choice != 1);
-                        System.out.println(choice != 2);
-                        if (choice != 1 && choice != 2) {
-                            throw new RuntimeException();
-                        }
-                        break;
-                    } catch (Exception e) {
-                        System.out.println("Enter a valid choicerara");
+                try{
+                    choice = scnrr.nextInt();
+                    if (choice != 1 && choice !=2){
+                        throw new RuntimeException();
                     }
+                } catch (Exception e) {
+                    System.out.println("Enter a valid choice");
                 }
 
 
 
                 if (choice == 1 ){
-                    System.out.println("Which card number would you like to save\n- ");
+                    System.out.println(cardList.size());
+                    System.out.println("Which card number would you like to save");
+                    System.out.print("- ");
+
                     while (true){
                         try{
-                            temp = scnr.nextInt();
+                            temp = scnr.nextInt() - 1;
                             scnr.nextLine();
-                            if (temp>cardList.size() || temp<1){
+                            if (temp>cardList.size()-1 || temp<0){
                                 throw new RuntimeException();
                             }
                             break;
@@ -134,14 +133,7 @@ public class WebScraper {
                     fw.flush();
                     break;
 
-
-
-
-
-
-
                 }
-
 
 
 

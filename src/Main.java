@@ -11,19 +11,27 @@ public class Main {
     }
 
     private static int getMenuChoice() {
-        Scanner scnr = new Scanner(System.in);
-        int menuChoice;
+
 
         while (true) {
+            Scanner scnr = new Scanner(System.in);
+            int menuChoice = 0;
             printActionMenu();
 
-            menuChoice = scnr.nextInt();
-            scnr.nextLine();
-            if (menuChoice >= 1 && menuChoice < 4) {
-                break;
+
+            try{
+                menuChoice = scnr.nextInt();
+                scnr.nextLine();
+                if (menuChoice < 1 || menuChoice > 3) {
+                    throw new RuntimeException();
+                }
+                return menuChoice;
+            } catch (Exception e) {
+                System.out.println("Please make a valid choice");
             }
+
         }
-        return menuChoice;
+
     }
 
     private static String getCardName() {
@@ -41,7 +49,8 @@ public class Main {
 
             System.out.println("Please select option\n" +
                     "1. Create new deck file\n" +
-                    "2. Use existing deck file\n- ");
+                    "2. Use existing deck file");
+                    System.out.print("- ");
 
             try{
                 choice = scnr.nextInt();
@@ -55,7 +64,8 @@ public class Main {
 
             if (choice==1){
                 System.out.println("Please enter the path that you want your " +
-                        "deck file saved to\n- ");
+                        "deck file saved to");
+                System.out.print("- ");
                 scnr.nextLine();
                 String fileName = scnr.nextLine();
                 File file = new File(fileName);
@@ -71,7 +81,8 @@ public class Main {
                 }
             }
             if (choice==2){
-                System.out.println("Please enter the path of your deck\n- ");
+                System.out.println("Please enter the path of your deck");
+                System.out.print("- ");
                 scnr.nextLine();
                 String fileName = scnr.nextLine();
                 File file = new File(fileName);
