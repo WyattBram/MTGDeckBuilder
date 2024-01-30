@@ -1,5 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.*;
 
@@ -71,8 +74,20 @@ public class Main {
                 File file = new File(fileName);
                 if (file.exists()){
                     for (int i = 1; i < 1001; i++) {
-                        if (!new File(fileName+ "Deck"+ i).exists()){
-                            return new File(fileName+ "Deck"+ i + ".txt");
+                        if (!new File(fileName+ "\\Deck"+ i + ".txt").exists()){
+
+                            Path path = Paths.get(fileName+ "\\Deck"+ i + ".txt");
+
+                            try{
+                                Path p = Files.createFile(path);
+                                System.out.println("File Created at Path: "+p);
+
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+
+
+                            return new File(fileName+ "\\Deck"+ i + ".txt");
                         }
                     }
                 }
