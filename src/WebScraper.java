@@ -3,9 +3,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -49,8 +47,7 @@ public class WebScraper {
             Elements error = document.select(".no-results");
 
             if (!error.isEmpty()) {
-                System.out.println("Sorry, I can not find " + card + ". Please try again!");
-                return;
+                throw new NoCardException(card);
             }
 
             System.out.println();
@@ -84,7 +81,7 @@ public class WebScraper {
                 int temp = 0;
                 Scanner scnrr = new Scanner(System.in);
 
-                System.out.println("Please select option\n" +
+                System.out.println("Would you like to save one of these to your deck\n" +
                         "1. Yes\n" +
                         "2. No");
                 System.out.print("- ");
@@ -101,21 +98,21 @@ public class WebScraper {
 
 
                 if (choice == 1 ){
-                    System.out.println(cardList.size());
-                    System.out.println("Which card number would you like to save");
+
+
+                    System.out.println("\nWhich card number would you like to save");
                     System.out.print("- ");
 
-                    while (true){
-                        try{
-                            temp = scnr.nextInt() - 1;
-                            scnr.nextLine();
-                            if (temp>cardList.size()-1 || temp<0){
-                                throw new RuntimeException();
-                            }
-                            break;
-                        } catch (Exception e) {
-                            System.out.println("Enter a valid choiceeeeee");
+                    try{
+                        temp = 0;
+                        temp = scnrr.nextInt() - 1;
+                        scnrr.nextLine();
+                        if (temp>cardList.size()-1 || temp<0){
+                            throw new RuntimeException();
                         }
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Enter a valid choice");
                     }
 
                     Scanner scanner = new Scanner(file);
@@ -145,8 +142,12 @@ public class WebScraper {
 
 
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }
+        catch (NoCardException nce){
+            System.out.println(nce.getMessage());
+        }
+        catch (Exception e) {
+            System.out.println("\nThere was an error, please try again!");
         }
     }
 

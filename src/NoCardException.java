@@ -1,5 +1,5 @@
 public class NoCardException extends Exception {
-    NoCardException() {
-        super("Can not find card, please enter card name again.");
+    NoCardException(String card) {
+        super("I cannot find " + card + ", please try again.");
     }
 }

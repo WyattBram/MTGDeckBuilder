@@ -9,7 +9,7 @@ import java.io.*;
 public class Main {
 
     private static void printActionMenu() {
-        System.out.println("Menu: \n1. Card select \n2. Other Decks\n3. Quit");
+        System.out.println("\nMenu: \n1. Card select \n2. Other Decks\n3. Quit");
         System.out.print("- ");
     }
 
@@ -36,10 +36,42 @@ public class Main {
         }
 
     }
+//C:\Users\bramb\OneDrive\Desktop\New folder\Deck0.txt
+    private static File createNewDeckFile(int i){
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("\nPlease enter the path that you want your " +
+                "deck file saved to");
+        System.out.print("- ");
+        String fileName = scnr.nextLine();
+        File file = new File(fileName);
+        if (file.exists()){
+            for (int j = i; j < j+1000; i++) {
+                if (!new File(fileName+ "\\Deck"+ i + ".txt").exists()){
+
+                    Path path = Paths.get(fileName+ "\\Deck"+ i + ".txt");
+
+                    try{
+                        Path p = Files.createFile(path);
+                        System.out.println("File Created at Path: "+p);
+
+                    } catch (Exception e) {
+                        System.out.println("Invalid path, try again");
+                    }
+
+
+                    return new File(fileName+ "\\Deck"+ i + ".txt");
+                }
+            }
+        }
+        if (!file.exists()){
+            System.out.println("Not valid path");
+        }
+        return createNewDeckFile(i+1000);
+    }
 
     private static String getCardName() {
         Scanner scnr = new Scanner(System.in);
-        System.out.print("Please enter the card name\n- ");
+        System.out.print("\nPlease enter the card name\n- ");
 
         return scnr.nextLine();
 
@@ -50,7 +82,7 @@ public class Main {
             Scanner scnr = new Scanner(System.in);
             int choice = 0;
 
-            System.out.println("Please select option\n" +
+            System.out.println("\nPlease select option\n" +
                     "1. Create new deck file\n" +
                     "2. Use existing deck file");
                     System.out.print("- ");
@@ -66,37 +98,10 @@ public class Main {
 
 
             if (choice==1){
-                System.out.println("Please enter the path that you want your " +
-                        "deck file saved to");
-                System.out.print("- ");
-                scnr.nextLine();
-                String fileName = scnr.nextLine();
-                File file = new File(fileName);
-                if (file.exists()){
-                    for (int i = 1; i < 1001; i++) {
-                        if (!new File(fileName+ "\\Deck"+ i + ".txt").exists()){
-
-                            Path path = Paths.get(fileName+ "\\Deck"+ i + ".txt");
-
-                            try{
-                                Path p = Files.createFile(path);
-                                System.out.println("File Created at Path: "+p);
-
-                            } catch (Exception e) {
-                                throw new RuntimeException(e);
-                            }
-
-
-                            return new File(fileName+ "\\Deck"+ i + ".txt");
-                        }
-                    }
-                }
-                if (!file.exists()){
-                    System.out.println("Not valid path");
-                }
+                return createNewDeckFile(0);
             }
             if (choice==2){
-                System.out.println("Please enter the path of your deck");
+                System.out.println("\nPlease enter the path of your deck");
                 System.out.print("- ");
                 scnr.nextLine();
                 String fileName = scnr.nextLine();
@@ -116,15 +121,13 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
+        System.out.println();
+        System.out.print("""
+                Welcome to MTGDeckBuilder! Explore the prices of Magic: The Gathering\s
+                cards while you construct your perfect deck!
+                """);
 
         File file = getDeck();
-
-        System.out.println();
-        System.out.println("""
-                Welcome to MTGPrices! Explore the prices of Magic: The Gathering,\s
-                cards both singles and mass entries. You can also conveniently
-                export card costs to a file for easy access.
-                """);
 
 
         do {
