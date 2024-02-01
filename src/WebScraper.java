@@ -2,6 +2,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ public class WebScraper {
 
     protected void returnSingleInfo(String card, File file) {
         cn = 1;
-        Scanner scnr = new Scanner(System.in);
         String editedCard = card.replace(" ", "+");
 
         String url = "https://www.cardkingdom.com/catalog/search?search=header&filter%5Bname%5D=" + editedCard;
@@ -54,7 +54,7 @@ public class WebScraper {
 
             Elements cardInfo = document.select(".productItemWrapper.productCardWrapper");
 
-            //System.out.println(cardInfo);
+
             ArrayList<Card> cardList = new ArrayList<>();
 
 
@@ -74,21 +74,20 @@ public class WebScraper {
                 newCard.printCard();
 
 
-
             }
-            while (true){
+            while (true) {
                 int choice = 0;
                 int temp = 0;
-                Scanner scnrr = new Scanner(System.in);
+                Scanner scnr = new Scanner(System.in);
 
                 System.out.println("Would you like to save one of these to your deck\n" +
                         "1. Yes\n" +
                         "2. No");
                 System.out.print("- ");
 
-                try{
-                    choice = scnrr.nextInt();
-                    if (choice != 1 && choice !=2){
+                try {
+                    choice = scnr.nextInt();
+                    if (choice != 1 && choice != 2) {
                         throw new RuntimeException();
                     }
                 } catch (Exception e) {
@@ -96,28 +95,27 @@ public class WebScraper {
                 }
 
 
+                if (choice == 1) {
 
-                if (choice == 1 ){
+                    while (true) {
 
+                        Scanner loopScanner = new Scanner(System.in);
+                        System.out.println("\nWhich card number would you like to save");
+                        System.out.print("- ");
 
-                    System.out.println("\nWhich card number would you like to save");
-                    System.out.print("- ");
-
-                    try{
-                        temp = 0;
-                        temp = scnrr.nextInt() - 1;
-                        scnrr.nextLine();
-                        if (temp>cardList.size()-1 || temp<0){
-                            throw new RuntimeException();
+                        try {
+                            temp = loopScanner.nextInt() - 1;
+                            loopScanner.nextLine();
+                            if (temp > cardList.size() - 1 || temp < 0) {
+                                throw new RuntimeException();
+                            }
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Enter a valid choice");
                         }
-                        break;
-                    } catch (Exception e) {
-                        System.out.println("Enter a valid choice");
                     }
 
-                    Scanner scanner = new Scanner(file);
                     FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
-
 
 
                     Card tempCard = cardList.get(temp);
@@ -130,27 +128,19 @@ public class WebScraper {
                     fw.flush();
                     break;
 
-                }
-
-
-
-                else if (choice == 2 ){
+                } else if (choice == 2) {
                     return;
 
                 }
             }
 
 
-
-        }
-        catch (NoCardException nce){
+        } catch (NoCardException nce) {
             System.out.println(nce.getMessage());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("\nThere was an error, please try again!");
         }
     }
-
 
 
 }
